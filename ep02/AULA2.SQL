@@ -1,0 +1,16 @@
+-- qual o maior peso e qual o menor peso?
+
+select
+product_category_name,
+COUNT(*) as qtde_produtos,
+ MAX(product_weight_g) as maior_peso,
+MIN(product_weight_g) as menor_peso,
+AVG(product_weight_g) as avg_peso
+FROM tb_products
+
+--isso vem antes do group by(no processamento)
+WHERE product_category_name  is not NULL 
+AND product_category_name != 'alimentos'
+AND product_category_name <> 'agro_industria_e_comercio'
+
+GROUP BY product_category_name
